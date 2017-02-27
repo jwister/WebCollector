@@ -32,7 +32,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author hu
  */
 public abstract class AutoParseCrawler extends Crawler implements Executor, Visitor, Requester {
@@ -86,7 +85,7 @@ public abstract class AutoParseCrawler extends Crawler implements Executor, Visi
         if (conteType != null && conteType.contains("text/html")) {
             Document doc = page.doc();
             if (doc != null) {
-                Links links = new Links().addByRegex(doc, regexRule,parseImg);
+                Links links = new Links().addByRegex(doc, regexRule, parseImg);
                 next.add(links);
             }
         }
@@ -103,7 +102,6 @@ public abstract class AutoParseCrawler extends Crawler implements Executor, Visi
     }
 
     /**
-     *
      * @return 返回是否自动抽取符合正则的链接并加入后续任务
      */
     public boolean isAutoParse() {
@@ -170,6 +168,6 @@ public abstract class AutoParseCrawler extends Crawler implements Executor, Visi
     public void setParseImg(boolean parseImg) {
         this.parseImg = parseImg;
     }
-    
-    
+
+
 }

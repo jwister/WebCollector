@@ -28,13 +28,13 @@ import org.json.JSONObject;
 
 /**
  * 本教程演示了如何自定义http请求
- *
+ * <p>
  * 有些爬取任务中，可能只有部分URL需要使用POST请求，我们可以利用2.20版本中添 加的MetaData功能，来完成POST请求的定制。
- *
+ * <p>
  * 使用MetaData除了可以标记URL是否需要使用POST，还可以存储POST所需的参数信息
- *
+ * <p>
  * 教程中还演示了如何定制Cookie、User-Agent等http请求头信息
- *
+ * <p>
  * WebCollector中已经包含了org.json的jar包
  *
  * @author hu
@@ -42,7 +42,6 @@ import org.json.JSONObject;
 public class DemoPostCrawler extends BreadthCrawler {
 
     /**
-     * 
      * 假设我们要爬取三个链接 1)http://www.A.com/index.php 需要POST，并且需要附带数据id=a
      * 2)http://www.B.com/index.php?id=b 需要POST，不需要附带数据 3)http://www.C.com/
      * 需要GET
@@ -85,7 +84,6 @@ public class DemoPostCrawler extends BreadthCrawler {
     }
 
     /**
-     *
      * @param args 参数
      * @throws Exception 异常
      */

@@ -75,7 +75,7 @@ public class Fetcher {
         this.executor = executor;
     }
 
-  
+
     /**
      *
      */
@@ -277,8 +277,8 @@ public class Fetcher {
             LOG.info("Please Specify A Executor!");
             return;
         }
-        
-         dbManager.merge();
+
+        dbManager.merge();
 
         try {
             generator.open();

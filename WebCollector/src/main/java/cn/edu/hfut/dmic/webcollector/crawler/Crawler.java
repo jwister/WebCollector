@@ -44,7 +44,7 @@ public class Crawler {
      * 根据任务管理器和执行器构造爬虫
      *
      * @param dbManager 任务管理器
-     * @param executor 执行器
+     * @param executor  执行器
      */
     public Crawler(DBManager dbManager, Executor executor) {
         this.dbManager = dbManager;
@@ -172,7 +172,7 @@ public class Crawler {
      * 添加种子集合
      *
      * @param datums 种子集合
-     * @param force 如果添加的种子是已爬取的任务，当force为true时，会强制注入种子，当force为false时，会忽略该种子
+     * @param force  如果添加的种子是已爬取的任务，当force为true时，会强制注入种子，当force为false时，会忽略该种子
      */
     public void addSeed(CrawlDatums datums, boolean force) {
         for (CrawlDatum datum : datums) {
@@ -193,7 +193,7 @@ public class Crawler {
      * 与addSeed(CrawlDatums datums, boolean force) 类似
      *
      * @param links 种子URL集合
-     * @param type 种子的type标识信息
+     * @param type  种子的type标识信息
      * @param force 是否强制注入
      */
     public void addSeed(Links links, String type, boolean force) {
@@ -218,7 +218,7 @@ public class Crawler {
      * 与addSeed(CrawlDatums datums)类似
      *
      * @param links 种子URL集合
-     * @param type 种子的type标识信息
+     * @param type  种子的type标识信息
      */
     public void addSeed(Links links, String type) {
         addSeed(links, type, false);
@@ -236,8 +236,8 @@ public class Crawler {
     /**
      * 与addSeed(CrawlDatum datum, boolean force)类似
      *
-     * @param url 种子URL
-     * @param type 种子的type标识信息
+     * @param url   种子URL
+     * @param type  种子的type标识信息
      * @param force 是否强制注入
      */
     public void addSeed(String url, String type, boolean force) {
@@ -248,7 +248,7 @@ public class Crawler {
     /**
      * 与addSeed(CrawlDatum datum, boolean force)类似
      *
-     * @param url 种子URL
+     * @param url   种子URL
      * @param force 是否强制注入
      */
     public void addSeed(String url, boolean force) {
@@ -260,7 +260,7 @@ public class Crawler {
      * 与addSeed(CrawlDatum datum)类似
      *
      * @param type 种子的type标识信息
-     * @param url 种子URL
+     * @param url  种子URL
      */
     public void addSeed(String url, String type) {
         addSeed(url, type, false);

@@ -18,12 +18,14 @@
 package cn.edu.hfut.dmic.contentextractor;
 
 import cn.edu.hfut.dmic.webcollector.net.HttpRequest;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -325,7 +327,7 @@ public class ContentExtractor {
         Elements titles = doc.body().select("*[id^=title],*[id$=title],*[class^=title],*[class$=title]");
         if (titles.size() > 0) {
             String title = titles.first().text();
-            if (title.length() > 5 && title.length()<40) {
+            if (title.length() > 5 && title.length() < 40) {
                 return titles.first().text();
             }
         }

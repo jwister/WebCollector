@@ -23,17 +23,17 @@ import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 
 
 /**
- * WebCollector 2.x版本的tutorial(2.20以上) 
+ * WebCollector 2.x版本的tutorial(2.20以上)
  * 2.x版本特性：
  * 1）自定义遍历策略，可完成更为复杂的遍历业务，例如分页、AJAX
  * 2）可以为每个URL设置附加信息(MetaData)，利用附加信息可以完成很多复杂业务，例如深度获取、锚文本获取、引用页面获取、POST参数传递、增量更新等。
  * 3）使用插件机制，WebCollector内置两套插件。
  * 4）内置一套基于内存的插件（RamCrawler)，不依赖文件系统或数据库，适合一次性爬取，例如实时爬取搜索引擎。
- * 5）内置一套基于Berkeley DB（BreadthCrawler)的插件：适合处理长期和大量级的任务，并具有断点爬取功能，不会因为宕机、关闭导致数据丢失。 
+ * 5）内置一套基于Berkeley DB（BreadthCrawler)的插件：适合处理长期和大量级的任务，并具有断点爬取功能，不会因为宕机、关闭导致数据丢失。
  * 6）集成selenium，可以对javascript生成信息进行抽取
- * 7）可轻松自定义http请求，并内置多代理随机切换功能。 可通过定义http请求实现模拟登录。 
+ * 7）可轻松自定义http请求，并内置多代理随机切换功能。 可通过定义http请求实现模拟登录。
  * 8）使用slf4j作为日志门面，可对接多种日志
- *
+ * <p>
  * 可在cn.edu.hfut.dmic.webcollector.example包中找到例子(Demo)
  *
  * @author hu
@@ -44,19 +44,19 @@ public class TutorialCrawler extends BreadthCrawler {
         该例子利用正则控制爬虫的遍历，
         另一种常用遍历方法可参考DemoTypeCrawler
     */
-    
+
     public TutorialCrawler(String crawlPath, boolean autoParse) {
         super(crawlPath, autoParse);
-        
+
         addSeed("http://blog.csdn.net/.*");
         addRegex("http://blog.csdn.net/.*/article/details/.*");
-        
+
         //需要抓取图片时设置为true，并加入图片的正则规则
         //setParseImg(true);
-        
+
         //设置每个线程的抓取间隔（毫秒）
         //setExecuteInterval(1000);
-        
+
         //设置线程数
         setThreads(30);
     }

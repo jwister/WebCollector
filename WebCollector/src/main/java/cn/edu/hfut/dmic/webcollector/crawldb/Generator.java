@@ -27,7 +27,7 @@ import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 public interface Generator {
 
     public CrawlDatum next();
-    
+
     public void open() throws Exception;
 
     public void setTopN(int topN);

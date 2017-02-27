@@ -24,17 +24,17 @@ import cn.edu.hfut.dmic.webcollector.plugin.ram.RamCrawler;
 
 
 /**
- * WebCollector 2.x版本的tutorial(2.20以上) 
+ * WebCollector 2.x版本的tutorial(2.20以上)
  * 2.x版本特性：
  * 1）自定义遍历策略，可完成更为复杂的遍历业务，例如分页、AJAX
  * 2）可以为每个URL设置附加信息(MetaData)，利用附加信息可以完成很多复杂业务，例如深度获取、锚文本获取、引用页面获取、POST参数传递、增量更新等。
  * 3）使用插件机制，WebCollector内置两套插件。
  * 4）内置一套基于内存的插件（RamCrawler)，不依赖文件系统或数据库，适合一次性爬取，例如实时爬取搜索引擎。
- * 5）内置一套基于Berkeley DB（BreadthCrawler)的插件：适合处理长期和大量级的任务，并具有断点爬取功能，不会因为宕机、关闭导致数据丢失。 
+ * 5）内置一套基于Berkeley DB（BreadthCrawler)的插件：适合处理长期和大量级的任务，并具有断点爬取功能，不会因为宕机、关闭导致数据丢失。
  * 6）集成selenium，可以对javascript生成信息进行抽取
- * 7）可轻松自定义http请求，并内置多代理随机切换功能。 可通过定义http请求实现模拟登录。 
+ * 7）可轻松自定义http请求，并内置多代理随机切换功能。 可通过定义http请求实现模拟登录。
  * 8）使用slf4j作为日志门面，可对接多种日志
- *
+ * <p>
  * 可在cn.edu.hfut.dmic.webcollector.example包中找到例子(Demo)
  *
  * @author hu
@@ -61,22 +61,22 @@ public class DemoMetaCrawler extends RamCrawler {
      */
     @Override
     public void visit(Page page, CrawlDatums next) {
-        
-        String type=page.meta("type");
+
+        String type = page.meta("type");
         //如果是列表页，抽取内容页链接，放入后续任务中
-        if(type.equals("taglist")){
+        if (type.equals("taglist")) {
             //可以确定抽取到的链接都指向内容页
             //因此为这些链接添加附加信息（meta）：type=content
             next.add(page.getLinks("table.tagCol td>a")).meta("type", "booklist");
-        }else if(type.equals("booklist")){
+        } else if (type.equals("booklist")) {
             next.add(page.getLinks("div.info>h2>a")).meta("type", "content");
-        }else if(type.equals("content")){
+        } else if (type.equals("content")) {
             //处理内容页，抽取书名和豆瓣评分
-            String title=page.select("h1>span").first().text();
-            String score=page.select("strong.ll.rating_num").first().text();
-            System.out.println("title:"+title+"\tscore:"+score);
+            String title = page.select("h1>span").first().text();
+            String score = page.select("strong.ll.rating_num").first().text();
+            System.out.println("title:" + title + "\tscore:" + score);
         }
- 
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -89,7 +89,7 @@ public class DemoMetaCrawler extends RamCrawler {
         //当我们将一个新链接（CrawlDatum）提交给爬虫时，链接指向页面的类型有时是确定的（例如在很多任务中，种子页面就是列表页）
         //如果在提交CrawlDatum时，直接将链接的类型信息（type）存放到meta中，那么在解析页面时，
         //只需取出链接（CrawlDatum）中的类型信息（type）即可知道当前页面类型           
-        CrawlDatum seed=new CrawlDatum("https://book.douban.com/tag/").meta("type", "taglist");
+        CrawlDatum seed = new CrawlDatum("https://book.douban.com/tag/").meta("type", "taglist");
         crawler.addSeed(seed);
 
 

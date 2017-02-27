@@ -22,10 +22,9 @@ import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Links;
 
 /**
- *
  * @author hu
  */
-public abstract class DBManager implements Injector, SegmentWriter{
+public abstract class DBManager implements Injector, SegmentWriter {
 
     public abstract boolean isDBExists();
 
