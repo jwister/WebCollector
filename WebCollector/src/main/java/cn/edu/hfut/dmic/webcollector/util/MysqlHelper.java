@@ -18,11 +18,11 @@
 package cn.edu.hfut.dmic.webcollector.util;
 
 import java.sql.SQLException;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- *
  * @author hu
  */
 public class MysqlHelper {
@@ -40,7 +40,7 @@ public class MysqlHelper {
         dataSource.setMaxActive(maxActive);
         template = new JdbcTemplate(dataSource);
     }
-    
+
 
     public BasicDataSource getDataSource() {
         return dataSource;
@@ -49,8 +49,7 @@ public class MysqlHelper {
     public void setDataSource(BasicDataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
-    
+
 
     public JdbcTemplate getTemplate() {
         return template;
@@ -59,8 +58,7 @@ public class MysqlHelper {
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
-    
-    
+
 
     public void close() throws SQLException {
         if (dataSource != null) {

@@ -20,11 +20,11 @@ package cn.edu.hfut.dmic.webcollector.plugin.ram;
 import cn.edu.hfut.dmic.webcollector.crawldb.Generator;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 import cn.edu.hfut.dmic.webcollector.util.Config;
+
 import java.util.Iterator;
 import java.util.Map.Entry;
 
 /**
- *
  * @author hu
  */
 public class RamGenerator implements Generator {
@@ -36,6 +36,7 @@ public class RamGenerator implements Generator {
     public RamGenerator(RamDB ramDB) {
         this.ramDB = ramDB;
     }
+
     public int totalGenerate = 0;
     Iterator<Entry<String, CrawlDatum>> iterator;
 

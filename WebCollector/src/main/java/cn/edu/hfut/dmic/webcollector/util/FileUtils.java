@@ -25,7 +25,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- *
  * @author hu
  */
 public class FileUtils {
@@ -79,8 +78,8 @@ public class FileUtils {
         fos.write(content);
         fos.close();
     }
-    
-    
+
+
     public static void write(String fileName, byte[] content) throws FileNotFoundException, IOException {
         File file = new File(fileName);
         File parent = file.getParentFile();
@@ -151,10 +150,10 @@ public class FileUtils {
 
     @Deprecated
     public static void writeFileWithParent(File file, byte[] content) throws FileNotFoundException, IOException {
-        write(file,content);
+        write(file, content);
     }
-    
-     public static byte[] read(File file) throws IOException {
+
+    public static byte[] read(File file) throws IOException {
         FileInputStream fis = new FileInputStream(file);
         byte[] buf = new byte[2048];
         int read;
@@ -189,7 +188,7 @@ public class FileUtils {
         File file = new File(fileName);
         return read(file, charset);
     }
-    
+
 
     @Deprecated
     public static byte[] readFile(File file) throws IOException {
@@ -204,11 +203,13 @@ public class FileUtils {
         fis.close();
         return bos.toByteArray();
     }
+
     @Deprecated
     public static byte[] readFile(String fileName) throws IOException {
         File file = new File(fileName);
         return readFile(file);
     }
+
     @Deprecated
     public static String readFile(File file, String charset) throws Exception {
         FileInputStream fis = new FileInputStream(file);
@@ -222,6 +223,7 @@ public class FileUtils {
         fis.close();
         return new String(bos.toByteArray(), charset);
     }
+
     @Deprecated
     public static String readFile(String fileName, String charset) throws Exception {
         File file = new File(fileName);

@@ -20,9 +20,8 @@ package cn.edu.hfut.dmic.webcollector.net;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 
 /**
- *
  * @author hu
  */
 public interface Requester {
-     public HttpResponse getResponse(CrawlDatum crawlDatum) throws Exception;
+    public HttpResponse getResponse(CrawlDatum crawlDatum) throws Exception;
 }

@@ -31,13 +31,14 @@ import com.sleepycat.je.Environment;
 import com.sleepycat.je.EnvironmentConfig;
 import com.sleepycat.je.LockMode;
 import com.sleepycat.je.OperationStatus;
+
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author hu
  */
 public class BerkeleyDBManager extends DBManager {
@@ -162,7 +163,7 @@ public class BerkeleyDBManager extends DBManager {
         if (linkDatabase != null) {
             linkDatabase.close();
         }
-       
+
     }
 
     @Override
@@ -218,8 +219,8 @@ public class BerkeleyDBManager extends DBManager {
 
     @Override
     public Generator getGenerator() {
-        if(generator==null){
-             generator = new BerkeleyGenerator(env);
+        if (generator == null) {
+            generator = new BerkeleyGenerator(env);
         }
         return generator;
     }

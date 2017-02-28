@@ -28,12 +28,13 @@ import com.sleepycat.je.Environment;
 import com.sleepycat.je.EnvironmentConfig;
 import com.sleepycat.je.LockMode;
 import com.sleepycat.je.OperationStatus;
+
 import java.io.File;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author hu
  */
 public class BerkeleyGenerator implements Generator {
@@ -42,7 +43,7 @@ public class BerkeleyGenerator implements Generator {
 
     Cursor cursor = null;
     Database crawldbDatabase = null;
-    Environment env=null;
+    Environment env = null;
     protected int totalGenerate = 0;
     protected int topN = -1;
     protected int maxExecuteCount = Config.MAX_EXECUTE_COUNT;
@@ -52,9 +53,9 @@ public class BerkeleyGenerator implements Generator {
 //        this.crawlPath = crawlPath;
 //
 //    }
-    
-      public BerkeleyGenerator(Environment env) {
-        this.env=env;
+
+    public BerkeleyGenerator(Environment env) {
+        this.env = env;
     }
 
     @Override
@@ -65,11 +66,11 @@ public class BerkeleyGenerator implements Generator {
 
     public void close() throws Exception {
 
-        if(cursor!=null){
+        if (cursor != null) {
             cursor.close();
         }
         cursor = null;
-        if(crawldbDatabase!=null){
+        if (crawldbDatabase != null) {
             crawldbDatabase.close();
         }
     }
@@ -98,7 +99,7 @@ public class BerkeleyGenerator implements Generator {
                     if (datum.getStatus() == CrawlDatum.STATUS_DB_SUCCESS) {
                         continue;
                     } else {
-                        if (datum.getExecuteCount()>maxExecuteCount) {
+                        if (datum.getExecuteCount() > maxExecuteCount) {
                             continue;
                         }
                         totalGenerate++;

@@ -19,6 +19,7 @@ package cn.edu.hfut.dmic.webcollector.net;
 
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 import cn.edu.hfut.dmic.webcollector.util.Config;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -34,11 +35,11 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author hu
  */
 public class HttpRequest {
@@ -53,7 +54,7 @@ public class HttpRequest {
     protected boolean followRedirects = false;
     protected int timeoutForConnect = Config.TIMEOUT_CONNECT;
     protected int timeoutForRead = Config.TIMEOUT_READ;
-    protected byte[] outputData=null;
+    protected byte[] outputData = null;
     Proxy proxy = null;
 
     protected Map<String, List<String>> headerMap = null;
@@ -79,7 +80,7 @@ public class HttpRequest {
         this(crawlDatum);
         this.proxy = proxy;
     }
-    
+
     @Deprecated
     public HttpResponse getResponse() throws Exception {
         return response();
@@ -102,9 +103,9 @@ public class HttpRequest {
                 }
 
                 config(con);
-                
-                if(outputData!=null){
-                    OutputStream os=con.getOutputStream();
+
+                if (outputData != null) {
+                    OutputStream os = con.getOutputStream();
                     os.write(outputData);
                     os.close();
                 }
@@ -114,15 +115,15 @@ public class HttpRequest {
                 if (redirect == 0) {
                     response.code(code);
                 }
-                
-                if(code==HttpURLConnection.HTTP_NOT_FOUND){
+
+                if (code == HttpURLConnection.HTTP_NOT_FOUND) {
                     response.setNotFound(true);
                     return response;
                 }
 
                 boolean needBreak = false;
                 switch (code) {
-                        
+
                     case HttpURLConnection.HTTP_MOVED_PERM:
                     case HttpURLConnection.HTTP_MOVED_TEMP:
                         response.setRedirect(true);
@@ -214,7 +215,7 @@ public class HttpRequest {
     }
 
     public void setMethod(String method) {
-        this.method=method;
+        this.method = method;
     }
 
     public CrawlDatum getCrawlDatum() {
@@ -227,19 +228,19 @@ public class HttpRequest {
 
     static {
         TrustManager[] trustAllCerts = new TrustManager[]{
-            new X509TrustManager() {
-                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                    return null;
-                }
+                new X509TrustManager() {
+                    public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                        return null;
+                    }
 
-                public void checkClientTrusted(
-                        java.security.cert.X509Certificate[] certs, String authType) {
-                }
+                    public void checkClientTrusted(
+                            java.security.cert.X509Certificate[] certs, String authType) {
+                    }
 
-                public void checkServerTrusted(
-                        java.security.cert.X509Certificate[] certs, String authType) {
+                    public void checkServerTrusted(
+                            java.security.cert.X509Certificate[] certs, String authType) {
+                    }
                 }
-            }
         };
 
         try {
@@ -320,7 +321,6 @@ public class HttpRequest {
         this.MAX_RECEIVE_SIZE = MAX_RECEIVE_SIZE;
     }
 
-   
 
     public Map<String, List<String>> getHeaders() {
         return headerMap;
@@ -407,9 +407,8 @@ public class HttpRequest {
 
     public void setOutputData(byte[] outputData) {
         this.outputData = outputData;
-        this.dooutput=true;
+        this.dooutput = true;
     }
-    
-    
+
 
 }

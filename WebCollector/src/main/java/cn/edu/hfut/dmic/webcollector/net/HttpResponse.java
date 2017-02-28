@@ -24,10 +24,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author hu
  */
 public class HttpResponse {
@@ -39,7 +39,7 @@ public class HttpResponse {
     private Map<String, List<String>> headers = null;
     private byte[] content = null;
     private boolean redirect = false;
-    private boolean notFound=false;
+    private boolean notFound = false;
     private String html = null;
 
     private URL realUrl = null;
@@ -48,7 +48,7 @@ public class HttpResponse {
         this.url = url;
     }
 
-    
+
     public URL url() {
         return url;
     }
@@ -56,7 +56,7 @@ public class HttpResponse {
     public void url(URL url) {
         this.url = url;
     }
-    
+
     @Deprecated
     public URL getUrl() {
         return url;
@@ -66,10 +66,11 @@ public class HttpResponse {
     public void setUrl(URL url) {
         this.url = url;
     }
-    
+
     /**
      * 通过猜测编码的方式获取html源码字符串
-     * @return 
+     *
+     * @return
      */
     public String decode() {
         if (content == null) {
@@ -97,29 +98,30 @@ public class HttpResponse {
             return null;
         }
     }
-    
+
     @Deprecated
     public String getHtml(String charset) {
-      return decode(charset);
+        return decode(charset);
     }
 
     @Deprecated
     public String getHtmlByCharsetDetect() {
         return decode();
     }
-    
-     public int code() {
+
+    public int code() {
         return code;
     }
-    
+
     public void code(int code) {
         this.code = code;
     }
-    
+
     @Deprecated
     public int getCode() {
         return code;
     }
+
     @Deprecated
     public void setCode(int code) {
         this.code = code;
@@ -132,8 +134,7 @@ public class HttpResponse {
     public void setNotFound(boolean notFound) {
         this.notFound = notFound;
     }
-    
-    
+
 
     public List<String> header(String name) {
         if (headers == null) {
@@ -141,7 +142,7 @@ public class HttpResponse {
         }
         return headers.get(name);
     }
-    
+
 
     @Deprecated
     public List<String> getHeader(String name) {
@@ -151,21 +152,22 @@ public class HttpResponse {
     public void headers(Map<String, List<String>> headers) {
         this.headers = headers;
     }
-    
+
     @Deprecated
     public void setHeaders(Map<String, List<String>> headers) {
         this.headers = headers;
     }
-    
-     public Map<String, List<String>> headers() {
+
+    public Map<String, List<String>> headers() {
         return headers;
     }
+
     @Deprecated
-     public Map<String, List<String>> getHeaders() {
+    public Map<String, List<String>> getHeaders() {
         return headers;
     }
-    
-    
+
+
     public byte[] content() {
         return content;
     }
@@ -173,11 +175,12 @@ public class HttpResponse {
     public void content(byte[] content) {
         this.content = content;
     }
-    
+
     @Deprecated
     public byte[] getContent() {
         return content;
     }
+
     @Deprecated
     public void setContent(byte[] content) {
         this.content = content;
@@ -207,8 +210,8 @@ public class HttpResponse {
         }
 
     }
-    
-    
+
+
     public String contentType() {
         try {
             String contentType;
@@ -227,7 +230,7 @@ public class HttpResponse {
 
     @Deprecated
     public String getContentType() {
-       return contentType();
+        return contentType();
     }
 
     public boolean isRedirect() {
@@ -237,7 +240,7 @@ public class HttpResponse {
     public void setRedirect(boolean redirect) {
         this.redirect = redirect;
     }
-    
+
 
     public URL getRealUrl() {
         if (realUrl == null) {

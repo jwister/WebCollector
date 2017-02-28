@@ -26,25 +26,25 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author hu
  */
 public class Proxys extends ArrayList<Proxy> {
-    public static final Logger LOG=LoggerFactory.getLogger(Proxys.class);
+    public static final Logger LOG = LoggerFactory.getLogger(Proxys.class);
 
     public static Random random = new Random();
-    
-    public Proxy nextRandom(){
-        int r=random.nextInt(this.size());
+
+    public Proxy nextRandom() {
+        int r = random.nextInt(this.size());
         return this.get(r);
     }
-    
-    public void addEmpty(){
-        Proxy nullProxy=null;
+
+    public void addEmpty() {
+        Proxy nullProxy = null;
         this.add(nullProxy);
     }
 
@@ -74,7 +74,7 @@ public class Proxys extends ArrayList<Proxy> {
         String line = null;
         while ((line = br.readLine()) != null) {
             line = line.trim();
-            if (line.startsWith("#")||line.isEmpty()) {
+            if (line.startsWith("#") || line.isEmpty()) {
                 continue;
             } else {
                 this.add(line);
